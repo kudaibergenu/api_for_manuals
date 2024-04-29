@@ -1,1 +1,3 @@
-PyPDF2
+pytesseract
+openai
+pdf2image
