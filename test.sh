@@ -1,15 +1,15 @@
 #!/bin/bash
 
-# Build the Docker image
 docker build -t myflaskapp .
-
-# Run the Docker container
 docker run -d --name myflaskcontainer -p 5000:5000 myflaskapp
 
 # Wait for the container to fully start and the Flask app to be ready
 echo "Waiting for the Flask app to start..."
-sleep 10
-
+until curl -s http://127.0.0.1:5000/ > /dev/null; do
+  echo -n '.'
+  sleep 1
+done
+echo "Flask app started."
 # Endpoint of the Flask API
 API_ENDPOINT="http://127.0.0.1:5000/process-pdf"
 
