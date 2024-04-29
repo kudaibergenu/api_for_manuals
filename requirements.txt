@@ -2,3 +2,4 @@ pytesseract
 openai
 pdf2image
 gunicorn
+flask
