@@ -1,6 +1,12 @@
 #!/bin/bash
 
 docker build -t myflaskapp .
+# Check if the container already exists and remove it if it does
+if [ $(docker ps -aq -f name=myflaskcontainer) ]; then
+    echo "Removing existing container..."
+    docker stop myflaskcontainer
+    docker rm myflaskcontainer
+fi
 docker run -d --name myflaskcontainer -p 5000:5000 myflaskapp
 
 # Wait for the container to fully start and the Flask app to be ready

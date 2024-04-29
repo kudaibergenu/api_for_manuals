@@ -2,4 +2,5 @@ pytesseract
 openai
 pdf2image
 gunicorn
-flask
+Flask
+python-dotenv
